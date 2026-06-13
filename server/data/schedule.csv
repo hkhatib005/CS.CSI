@@ -1,0 +1,4 @@
+# Real semester schedule — fill from CUNY Global Search (globalsearch.cuny.edu)
+# days are comma-separated full names in quotes; times are 24h HH:MM
+course_code,section,days,start,end,room,professor
+CSC 326,6045,"Mon,Wed",10:10,12:05,1N-111,Staff (TBA)
