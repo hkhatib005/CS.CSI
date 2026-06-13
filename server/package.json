@@ -1,0 +1,14 @@
+{
+  "name": "dolphin-planner-server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --experimental-sqlite --watch src/index.js",
+    "test": "node --experimental-sqlite --test tests/conflicts.test.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.0",
+    "express": "^4.21.0"
+  }
+}

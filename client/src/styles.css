@@ -1,0 +1,573 @@
+/* ---------------------------------------------------------------------
+   Dolphin Planner — design tokens
+   Palette nods to the Staten Island Ferry: ink water, paper sky,
+   and that unmistakable ferry orange as the single loud accent.
+--------------------------------------------------------------------- */
+:root {
+  --paper: #fafbfc;
+  --ink: #16212e;
+  --muted: #5c6b7a;
+  --line: #e2e7ec;
+  --ferry: #f4641e;
+  --ferry-soft: #fdeee5;
+  --clash: #c03a1e;
+  --ok: #1e7a5a;
+
+  --harbor: #19618f;
+  --tide: #1e7a5a;
+  --plum: #6b4c8a;
+  --gold: #9a7016;
+  --steel: #46606f;
+
+  --display: "Bricolage Grotesque", system-ui, sans-serif;
+  --body: "Public Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ferry);
+  outline-offset: 2px;
+}
+
+.mono {
+  font-family: var(--mono);
+  font-size: 0.85em;
+  letter-spacing: 0.01em;
+}
+
+/* ----- top bar -------------------------------------------------------- */
+.topbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 28px 14px;
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.wordmark {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.wordmark .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--ferry);
+  align-self: center;
+}
+
+.wordmark h1 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.45rem;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.campus {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.meta {
+  display: flex;
+  gap: 8px;
+}
+
+.chip {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px 10px;
+  background: #fff;
+}
+
+.clash-chip {
+  border-color: var(--clash);
+  color: var(--clash);
+  background: #fbeae5;
+}
+
+.ok-chip {
+  border-color: var(--ok);
+  color: var(--ok);
+  background: #e9f4ef;
+}
+
+/* ----- layout ---------------------------------------------------------- */
+.layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 24px;
+  padding: 24px 28px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ----- search pane ------------------------------------------------------ */
+.search-label {
+  display: block;
+  font-family: var(--display);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font: inherit;
+  background: #fff;
+}
+
+.search-input:focus {
+  outline: 2px solid var(--ferry);
+  border-color: transparent;
+}
+
+.results {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.course {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  overflow: hidden;
+}
+
+.course.open {
+  border-color: var(--ink);
+}
+
+.course-row {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  align-items: baseline;
+}
+
+.course-row:hover {
+  background: var(--ferry-soft);
+}
+
+.code {
+  color: var(--harbor);
+  font-weight: 500;
+}
+
+.credits {
+  color: var(--muted);
+}
+
+.term {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 7px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--harbor);
+  font-size: 0.68rem;
+  vertical-align: middle;
+}
+
+.rmp-link {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--harbor);
+  font-size: 0.85rem;
+  text-underline-offset: 2px;
+}
+
+.sections {
+  border-top: 1px solid var(--line);
+  padding: 6px 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.section-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "when add"
+    "prof add";
+  gap: 2px 10px;
+  align-items: center;
+  padding-top: 6px;
+}
+
+.section-when {
+  grid-area: when;
+  display: flex;
+  gap: 10px;
+  color: var(--ink);
+}
+
+.room {
+  color: var(--muted);
+}
+
+.prof-link {
+  grid-area: prof;
+  justify-self: start;
+  color: var(--harbor);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 0;
+}
+
+.rating {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.add-btn {
+  grid-area: add;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.add-btn:hover {
+  background: var(--ferry);
+}
+
+.add-btn.added {
+  background: #fff;
+  color: var(--clash);
+  border: 1px solid var(--clash);
+}
+
+.empty {
+  color: var(--muted);
+  padding: 10px 4px;
+}
+
+/* ----- schedule grid ----------------------------------------------------
+   The signature element: a departure-board week. Hairline hour rules,
+   mono labels, solid course blocks — conflicts get warning stripes.
+------------------------------------------------------------------------- */
+.grid-pane {
+  min-width: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 44px repeat(5, 1fr);
+  grid-template-rows: 28px 640px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  overflow: hidden;
+}
+
+.grid-corner {
+  border-bottom: 1px solid var(--line);
+}
+
+.grid-day {
+  border-bottom: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+}
+
+.grid-times {
+  position: relative;
+}
+
+.hour {
+  position: absolute;
+  right: 6px;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.grid-col {
+  position: relative;
+  border-left: 1px solid var(--line);
+}
+
+.hour-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px solid var(--line);
+}
+
+.block {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  border-radius: 6px;
+  color: #fff;
+  padding: 5px 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+  overflow: hidden;
+  transition: filter 0.12s ease;
+}
+
+.block:hover {
+  filter: brightness(1.12);
+}
+
+.block-code {
+  font-weight: 500;
+}
+
+.block-room {
+  opacity: 0.75;
+  font-size: 0.68rem;
+}
+
+.block.harbor { background: var(--harbor); }
+.block.tide   { background: var(--tide); }
+.block.plum   { background: var(--plum); }
+.block.gold   { background: var(--gold); }
+.block.steel  { background: var(--steel); }
+
+.block.clash {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0) 0 10px,
+    rgba(255, 255, 255, 0.28) 10px 16px
+  );
+  box-shadow: inset 0 0 0 2px var(--clash);
+}
+
+.grid-empty {
+  color: var(--muted);
+  text-align: center;
+  margin-top: 14px;
+}
+
+/* ----- professor panel -------------------------------------------------- */
+.panel-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(22, 33, 46, 0.45);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 10;
+}
+
+.panel {
+  width: min(420px, 100%);
+  background: var(--paper);
+  height: 100%;
+  overflow-y: auto;
+  padding: 24px;
+  position: relative;
+  border-left: 4px solid var(--ferry);
+}
+
+.panel-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.5rem;
+  color: var(--muted);
+}
+
+.panel-name {
+  font-family: var(--display);
+  font-weight: 800;
+  margin: 4px 0 0;
+}
+
+.panel-dept {
+  color: var(--muted);
+  margin: 2px 0 16px;
+}
+
+.stat-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.stat {
+  flex: 1;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px;
+  text-align: center;
+}
+
+.stat-num {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.stat-label {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.ai-btn {
+  width: 100%;
+  background: var(--ferry);
+  color: #fff;
+  font-weight: 600;
+  border-radius: var(--radius);
+  padding: 10px;
+}
+
+.ai-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.ai-summary {
+  background: var(--ferry-soft);
+  border: 1px solid #f6c5a8;
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  margin: 10px 0 0;
+}
+
+.ai-tag {
+  color: var(--ferry);
+}
+
+.reviews {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.review {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+}
+
+.review-head {
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.review p {
+  margin: 0;
+}
+
+.review-form h3 {
+  font-family: var(--display);
+  margin: 0 0 8px;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.form-row label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.form-row select,
+.review-form textarea {
+  font: inherit;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 8px;
+  background: #fff;
+}
+
+.review-form textarea {
+  width: 100%;
+  resize: vertical;
+  margin-bottom: 8px;
+}
+
+.form-error {
+  color: var(--clash);
+  font-size: 0.85rem;
+  margin: 0 0 8px;
+}
+
+.panel-loading {
+  color: var(--muted);
+}
+
+/* ----- footer / responsive ---------------------------------------------- */
+.foot {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  padding: 12px 0 28px;
+}
+
+@media (max-width: 920px) {
+  .layout {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .grid {
+    grid-template-rows: 28px 560px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
